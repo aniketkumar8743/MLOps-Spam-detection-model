@@ -60,10 +60,8 @@ Spam detection is an essential task in natural language processing, helping to f
 ## 📈 Results
 
 The Random Forest classifier achieves the following:
-- **Accuracy**: ~XX%
-- **Precision**: ~XX%
-- **Recall**: ~XX%
-- **F1-Score**: ~XX%
+- **Accuracy**: ~84%
+- **ACU**: ~76%
 
 ---
 
