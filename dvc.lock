@@ -1,0 +1,89 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe "d:/Project
+      and code/MLOPS/MLOps-Spam-detection-model/src/data_ingestion.py"
+    deps:
+    - path: src/data_ingestion.py
+      hash: md5
+      md5: d17288626bdcb3baf5c7b7d8fe0f52f9
+      size: 2790
+    outs:
+    - path: data/raw
+      hash: md5
+      md5: 39478a4269b353b4f25dcf9b6865a45d.dir
+      size: 511598
+      nfiles: 2
+  Pre-processing:
+    cmd: C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe "d:/Project
+      and code/MLOPS/MLOps-Spam-detection-model/src/Pre-processing.py"
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: 39478a4269b353b4f25dcf9b6865a45d.dir
+      size: 511598
+      nfiles: 2
+    - path: src/Pre-processing.py
+      hash: md5
+      md5: c024d388bda36c24314529e67226a911
+      size: 3420
+    outs:
+    - path: data/interim
+      hash: md5
+      md5: 0625702edda71c4adf33c457b80c5d3d.dir
+      size: 305708
+      nfiles: 2
+  feature_engineering:
+    cmd: C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe "d:/Project
+      and code/MLOPS/MLOps-Spam-detection-model/src/feature_engineering.py"
+    deps:
+    - path: data/interim
+      hash: md5
+      md5: 0625702edda71c4adf33c457b80c5d3d.dir
+      size: 305708
+      nfiles: 2
+    - path: src/feature_engineering.py
+      hash: md5
+      md5: b79fd86b16c4ec4b4de41f84d9dc75c1
+      size: 2817
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 4e108a260a8f235ff04a47e0c62b7731.dir
+      size: 11584463
+      nfiles: 2
+  model_building:
+    cmd: C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe "d:/Project
+      and code/MLOPS/MLOps-Spam-detection-model/src/model_building.py"
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 4e108a260a8f235ff04a47e0c62b7731.dir
+      size: 11584463
+      nfiles: 2
+    - path: src/model_building.py
+      hash: md5
+      md5: e7b8d90e6577ece27e8b2bb059b8cd2d
+      size: 2871
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: dddd6e32a2ab2e7f68631739a21f518a
+      size: 26707998
+  model_evaluation:
+    cmd: C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe "d:/Project
+      and code/MLOPS/MLOps-Spam-detection-model/src/model_evaluation.py"
+    deps:
+    - path: models/model.pkl
+      hash: md5
+      md5: dddd6e32a2ab2e7f68631739a21f518a
+      size: 26707998
+    - path: src/model_evaluation.py
+      hash: md5
+      md5: 9daf75c1b4c52186b9a5710006eeb7a2
+      size: 3150
+    outs:
+    - path: reports/metrics.json
+      hash: md5
+      md5: 3b02d456cb11c0102e735812eb266544
+      size: 71

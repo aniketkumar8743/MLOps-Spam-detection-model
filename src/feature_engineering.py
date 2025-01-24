@@ -48,10 +48,7 @@ def apply_tfidf(train_data,test_data,max_features):
     X_train_bow = vectorizer.fit_transform(X_train)
     X_test_bow = vectorizer.fit_transform(X_test)
     
-    from imblearn.over_sampling import SMOTE
 
-    smote = SMOTE()
-    X_train_bow, y_train = smote.fit_resample(X_train_bow, y_train)
     
     train_df = pd.DataFrame(X_train_bow.toarray())
     train_df['label'] = y_train
